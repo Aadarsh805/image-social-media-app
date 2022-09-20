@@ -4,18 +4,29 @@ import shareVideo from "../assets/share.mp4";
 import logo from "../assets/logowhite.png";
 import { GoogleLogin } from "@react-oauth/google";
 
-const Login = () => {
-  const responseGoogle = (response) => {
-    localStorage.setItem("user", JSON.stringify(response.profileObj));
+import { client } from "../client";
+import jwt_decode from "jwt-decode";
 
-    const {name, googleId, imageUrl} = response.profileObj
+const Login = () => {
+  const navigate = useNavigate();
+
+  const responseGoogle = (res) => {
+    const decoded = jwt_decode(res.credential);
+    const {name, picture, sub} = decoded
+
+    localStorage.setItem('user', JSON.stringify(decoded))
+
 
     const doc = {
-      _id: googleId,
-      _type: 'user',
+      _id: sub,
+      _type: "user",
       userName: name,
-      image: imageUrl,
-    }
+      image: picture,
+    };
+
+    client.createIfNotExists(doc).then(() => {
+      navigate("/", { replace: true });
+    });
   };
 
   return (
