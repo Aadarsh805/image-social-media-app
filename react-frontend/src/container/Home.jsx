@@ -18,15 +18,14 @@ const Home = () => {
       ? JSON.parse(localStorage.getItem("user"))
       : localStorage.clear();
 
-      
-      useEffect(() => {
-        const query = userQuery(userInfo?.sub);
-        
-        client.fetch(query).then((data) => {
-          setUser(data);
-        });
-      }, []);
-      console.log(user)
+  useEffect(() => {
+    const query = userQuery(userInfo?.sub);
+
+    client.fetch(query).then((data) => {
+      setUser(data);
+    });
+  }, []);
+  console.log(user);
 
   return (
     <div className="flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out">
@@ -37,16 +36,26 @@ const Home = () => {
         <HiMenu
           fontSize={40}
           className="cursor-pointer"
-          onClick={() => setToggleSidebar(false)}
+          onClick={() => setToggleSidebar(true)}
         />
         <Link to="/">
           <img src={logo} alt="logo" className="w-28" />
         </Link>
         <Link to={`user-profile/${user?.id}`}>
           <img src={user?.picture} alt="logo" className="w-28" />
-          <img src="" alt="a" />
         </Link>
       </div>
+      {toggleSidebar && (
+        <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+          <div className="absolute w-full flex justify-end items-center p-2">
+            <AiFillCloseCircle
+              fontSize={30}
+              className="cursor-pointer"
+              onClick={() => setToggleSidebar(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
