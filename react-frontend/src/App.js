@@ -10,6 +10,8 @@ const App = () => {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="/*" element={<Home />} />
+        <Route path="/*" element={<Home />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </GoogleOAuthProvider>
   );
