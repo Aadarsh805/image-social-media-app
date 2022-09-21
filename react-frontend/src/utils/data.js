@@ -3,3 +3,4 @@ export const userQuery = (userId) => {
 
   return query;
 };
+
