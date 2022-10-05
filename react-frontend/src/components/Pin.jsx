@@ -102,7 +102,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                 <a
                   href={destination}
                   target="_blank"
-                  rel="noreferrer"rel="noreferrer"
+                  rel="noreferrer"
                   className="bg-white flex items-center gap-2 text-black font-bold p-2 px-4 rounded-full opacity-70 hover:opactiy-100 hover:shadow-md"
                 >
                   <BsFillArrowUpRightCircleFill />
