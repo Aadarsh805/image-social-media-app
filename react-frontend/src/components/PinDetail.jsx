@@ -112,7 +112,7 @@ const PinDetail = ({ user }) => {
               {pinDetail.postedBy?.userName}
             </p>
           </Link>
-          <h className="mt-5 text-2xl">Comments</h>
+          <h2 className="mt-5 text-2xl">Comments</h2>
           <div className="max-h-370 overflow-y-auto">
             {pinDetail?.comments?.map((comment, index) => (
               <div
