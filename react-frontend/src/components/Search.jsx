@@ -1,9 +1,20 @@
-import React from 'react'
+import { useState, useEffect } from "react";
 
-const Search = () => {
+import MasonryLayout from "./MasonryLayout";
+import { client } from "../client";
+import { feedQuery, searchQuery } from "../utils/data";
+import Spinner from "./Spinner";
+
+const Search = ({ searchTerm }) => {
+  const [pins, setPins] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   return (
-    <div>Search</div>
-  )
-}
+    <>
+      <div>{loading && <Spinner message="Searching for pins..." />}</div>
+      <div>a</div>
+    </>
+  );
+};
 
-export default Search
+export default Search;
